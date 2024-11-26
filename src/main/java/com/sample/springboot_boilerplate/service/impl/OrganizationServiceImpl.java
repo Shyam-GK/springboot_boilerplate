@@ -3,6 +3,7 @@ package com.sample.springboot_boilerplate.service.impl;
 import com.sample.springboot_boilerplate.Db.OrgHandler;
 import com.sample.springboot_boilerplate.dto.OrganizationDTO;
 import com.sample.springboot_boilerplate.dto.ProductDTO;
+import com.sample.springboot_boilerplate.dto.EmployeeDTO;
 import com.sample.springboot_boilerplate.entity.Organization;
 import com.sample.springboot_boilerplate.exception.ResourceNotFoundException;
 import com.sample.springboot_boilerplate.mapper.OrganizationMapper;
@@ -51,6 +52,24 @@ public class OrganizationServiceImpl implements OrganizationService {
 
         return products;
     }
+
+    @Override
+    public List<EmployeeDTO> getEmployeeList(Integer id) {
+        List<Object[]> orgs = orgHandler.getEmployeeList(id);
+        List<EmployeeDTO> employee = new ArrayList<>();
+
+        for  (Object[] org : orgs) {
+             EmployeeDTO dto = new EmployeeDTO();
+             dto.setId(Integer.parseInt(Objects.toString(org[0])));
+             dto.setOrg_id(Integer.parseInt(Objects.toString(org[1])));
+             dto.setEmployee_name((String) org[2]);
+
+             employee.add(dto);
+        }
+
+        return employee;
+    }
+
 
     @Override
     public OrganizationDTO getOrganizationById(Integer id) {

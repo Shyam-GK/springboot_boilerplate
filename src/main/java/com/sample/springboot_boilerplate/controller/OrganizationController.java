@@ -1,5 +1,6 @@
 package com.sample.springboot_boilerplate.controller;
 
+import com.sample.springboot_boilerplate.dto.EmployeeDTO;
 import com.sample.springboot_boilerplate.dto.OrganizationDTO;
 import com.sample.springboot_boilerplate.dto.ProductDTO;
 import org.springframework.web.bind.annotation.CrossOrigin;

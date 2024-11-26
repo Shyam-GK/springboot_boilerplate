@@ -30,4 +30,13 @@ public class OrgHandler {
         Query nativeQuery = entityManager.createNativeQuery(query.toString());
         return nativeQuery.setParameter("id", id).getResultList();
     }
+
+    @SuppressWarnings("unchecked")
+    public List<Object[]> getEmployeeList(Integer id) {
+        StringBuilder query = new StringBuilder();
+        query.append("select id, org_id, employee_name from Employee where id = :id ");
+
+        Query nativeQuery = entityManager.createNativeQuery(query.toString());
+        return nativeQuery.setParameter("id", id).getResultList();
+    }
 }
