@@ -45,4 +45,13 @@ public class OrganizationController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+
+    @GetMapping("/{id}/employee/list")
+    public ResponseEntity<List<EmployeeDTO>> getEmployeeList(@PathVariable("id") Integer id) {
+        List<EmployeeDTO> employee = organizationService.getEmployeeList(id);
+        return ResponseEntity.ok(employee);
+    }
+
+
 }

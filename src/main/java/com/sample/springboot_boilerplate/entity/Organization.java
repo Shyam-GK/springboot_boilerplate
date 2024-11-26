@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(
-        name = "t_organization"
+        name = "Employee"
 )
 public class Organization {
 
@@ -22,10 +22,7 @@ public class Organization {
     @Column(name = "id", nullable = false, updatable = false)
     private Integer id;
 
-    @Column(name = "name", nullable = false, length = 64)
+    @Column(name = "name",nullable = false, length=64)
     private String name;
-
-    @Column(name = "description")
-    private String description;
 }
 

@@ -10,8 +10,7 @@ public class OrganizationMapper {
     public OrganizationDTO toDTO(Organization organization) {
         return new OrganizationDTO(
                 organization.getId(),
-                organization.getName(),
-                organization.getDescription()
+                organization.getName()
         );
     }
 }
