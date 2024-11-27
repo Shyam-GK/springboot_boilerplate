@@ -11,4 +11,6 @@ public class EmployeeDTO {
     private Integer id;
     private Integer org_id;
     private String employee_name;
+    private String emp_email;
+    private String manager_email;
 }

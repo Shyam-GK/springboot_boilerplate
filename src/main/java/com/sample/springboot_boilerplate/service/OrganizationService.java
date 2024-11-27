@@ -11,5 +11,7 @@ public interface OrganizationService {
     OrganizationDTO getOrganizationById(Integer id);
     List<ProductDTO> getProductList(Integer id);
     List<EmployeeDTO> getEmployeeList(Integer id);
+    List<EmployeeDTO> getManagerEmails(Integer id, String emp_email);
+    List<EmployeeDTO> getEmployeeEmails(Integer id, String manager_email);//pass manager id to get employee under them
 }
 

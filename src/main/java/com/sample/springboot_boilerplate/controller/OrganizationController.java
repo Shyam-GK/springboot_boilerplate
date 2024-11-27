@@ -55,4 +55,17 @@ public class OrganizationController {
     }
 
 
+    @GetMapping("/{id}/employee/{emp_email}/direct_reports")
+    public ResponseEntity<List<EmployeeDTO>> getManagerEmails(@PathVariable("id") Integer id , @PathVariable("emp_email") String emp_email ) {
+        List<EmployeeDTO> employee = organizationService.getManagerEmails(id, emp_email);
+        return ResponseEntity.ok(employee);
+    }
+
+    @GetMapping("/{id}/employee/{manager_email}/direct_reports_for_employees")
+    public ResponseEntity<List<EmployeeDTO>> getEmployeeEmails(@PathVariable("id") Integer id , @PathVariable("manager_email") String manager_email ) {
+        List<EmployeeDTO> employee = organizationService.getEmployeeEmails(id, manager_email);
+        return ResponseEntity.ok(employee);
+    }
+
+
 }

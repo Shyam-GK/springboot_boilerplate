@@ -63,12 +63,54 @@ public class OrganizationServiceImpl implements OrganizationService {
              dto.setId(Integer.parseInt(Objects.toString(org[0])));
              dto.setOrg_id(Integer.parseInt(Objects.toString(org[1])));
              dto.setEmployee_name((String) org[2]);
+             dto.setEmp_email((String) org[3]);
+             dto.setManager_email((String) org[4]);
 
              employee.add(dto);
         }
 
         return employee;
     }
+
+    @Override
+    public List<EmployeeDTO> getManagerEmails(Integer id, String emp_email) {
+        List<Object[]> orgs = orgHandler.getManagerEmails(id, emp_email);
+        List<EmployeeDTO> employee = new ArrayList<>();
+
+        for  (Object[] org : orgs) {
+             EmployeeDTO dto = new EmployeeDTO();
+             dto.setId(Integer.parseInt(Objects.toString(org[0])));
+             dto.setOrg_id(Integer.parseInt(Objects.toString(org[1])));
+             dto.setEmployee_name((String) org[2]);
+             dto.setEmp_email((String) org[3]);
+             dto.setManager_email((String) org[4]);
+
+             employee.add(dto);
+        }
+
+        return employee;
+    }
+
+
+    @Override
+    public List<EmployeeDTO> getEmployeeEmails(Integer id, String manager_email) {
+        List<Object[]> orgs = orgHandler.getEmployeeEmails(id, manager_email);
+        List<EmployeeDTO> employee = new ArrayList<>();
+
+        for  (Object[] org : orgs) {
+             EmployeeDTO dto = new EmployeeDTO();
+             dto.setId(Integer.parseInt(Objects.toString(org[0])));
+             dto.setOrg_id(Integer.parseInt(Objects.toString(org[1])));
+             dto.setEmployee_name((String) org[2]);
+             dto.setEmp_email((String) org[3]);
+             dto.setManager_email((String) org[4]);
+
+             employee.add(dto);
+        }
+
+        return employee;
+    }
+
 
 
     @Override

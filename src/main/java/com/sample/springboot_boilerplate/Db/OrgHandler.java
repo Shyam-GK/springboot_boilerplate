@@ -34,9 +34,27 @@ public class OrgHandler {
     @SuppressWarnings("unchecked")
     public List<Object[]> getEmployeeList(Integer id) {
         StringBuilder query = new StringBuilder();
-        query.append("select id, org_id, employee_name from Employee where id = :id ");
+        query.append("select id, org_id, employee_name ,emp_email , manager_email from Employee where id = :id ");
 
         Query nativeQuery = entityManager.createNativeQuery(query.toString());
-        return nativeQuery.setParameter("id", id).getResultList();
+        return nativeQuery.setParameter("id", id ).getResultList();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Object[]> getManagerEmails(Integer id, String emp_email) {
+        StringBuilder query = new StringBuilder();
+        query.append("select id, org_id, employee_name ,emp_email , manager_email from Employee where org_id = :id and emp_email= :emp_email");
+
+        Query nativeQuery = entityManager.createNativeQuery(query.toString());
+        return nativeQuery.setParameter("id", id ).setParameter("emp_email" ,emp_email).getResultList();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Object[]> getEmployeeEmails(Integer id, String manager_email) {
+        StringBuilder query = new StringBuilder();
+        query.append("select id, org_id, employee_name ,emp_email , manager_email from Employee where org_id = :id and manager_email= :manager_email");
+
+        Query nativeQuery = entityManager.createNativeQuery(query.toString());
+        return nativeQuery.setParameter("id", id ).setParameter("manager_email" ,manager_email).getResultList();
     }
 }
